@@ -2,7 +2,7 @@ import grails.plugin.nettymvc.Server
 import grails.plugin.nettymvc.http.SessionManager
 
 class NettymvcGrailsPlugin {
-	String version = '0.1-SNAPSHOT'
+	String version = '0.1'
 	String grailsVersion = '2.0 > *'
 	String author = 'Burt Beckwith'
 	String authorEmail = 'beckwithb@vmware.com'
