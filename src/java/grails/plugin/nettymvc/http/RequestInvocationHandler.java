@@ -34,6 +34,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.util.LinkedCaseInsensitiveMap;
 
 /**
+ * To avoid Servlet 2.5/3.0 issues there is no class that directly implements HttpServletRequest like
+ * NettyHttpServletResponse/HttpServletResponse, instead a dynamic proxy is created and methods are
+ * dispatched here.
+ *
  * @author <a href='mailto:burt@burtbeckwith.com'>Burt Beckwith</a>
  */
 public class RequestInvocationHandler implements InvocationHandler {

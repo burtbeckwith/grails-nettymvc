@@ -5,7 +5,11 @@ import java.security.SecureRandom;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-// Based on org.apache.catalina.util.SessionIdGenerator
+/**
+ * Based on org.apache.catalina.util.SessionIdGenerator.
+ *
+ * @author <a href='mailto:burt@burtbeckwith.com'>Burt Beckwith</a>
+ */
 public class SessionIdGenerator {
 
 	/**

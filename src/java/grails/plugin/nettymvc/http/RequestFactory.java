@@ -7,6 +7,9 @@ import java.lang.reflect.Proxy;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * @author <a href='mailto:burt@burtbeckwith.com'>Burt Beckwith</a>
+ */
 public class RequestFactory {
 
 	public static HttpServletRequest createInstance(ServletContext servletContext,
