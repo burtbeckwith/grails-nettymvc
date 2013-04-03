@@ -146,8 +146,16 @@ public class ServletNettyHandler extends ChannelInboundMessageHandlerAdapter<Ful
 			GroovyUtils.debugResponse(servletResponse);
 		}
 
+		NettyHttpServletResponse mockResponse = Utils.findResponse(servletResponse);
+
+		if (!servletResponse.isCommitted()) {
+			if (mockResponse.getStatus() == OK.code() && mockResponse.getByteArrayOutputStream().size() > 0) {
+				// assume that since there wasn't an error but there is content, the request was processed by a filter (e.g. resources plugin)
+				mockResponse.flushBuffer();
+			}
+		}
+
 		if (servletResponse.isCommitted()) {
-			NettyHttpServletResponse mockResponse = Utils.findResponse(servletResponse);
 			String redirectedUrl = mockResponse.getRedirectedUrl();
 			if (redirectedUrl != null) {
 				sendRedirect(ctx, redirectedUrl);
@@ -162,7 +170,7 @@ public class ServletNettyHandler extends ChannelInboundMessageHandlerAdapter<Ful
 
 		boolean close = true; // !isKeepAlive(request); TODO
 
-		if (chain.wasHandled()) {
+		if (chain.wasHandled() || servletResponse.isCommitted()) {
 			sendChainResponse(ctx, close);
 		}
 		else {

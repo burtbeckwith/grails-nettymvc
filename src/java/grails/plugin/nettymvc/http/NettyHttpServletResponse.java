@@ -393,6 +393,10 @@ public class NettyHttpServletResponse implements HttpServletResponse {
 		return redirectedUrl;
 	}
 
+	public ByteArrayOutputStream getByteArrayOutputStream() {
+		return content;
+	}
+
 	protected void setHeaderValue(String name, Object value) {
 		if (setSpecialHeader(name, value)) {
 			return;
