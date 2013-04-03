@@ -7,7 +7,7 @@ class NettymvcGrailsPlugin {
 	String author = 'Burt Beckwith'
 	String authorEmail = 'beckwithb@vmware.com'
 	String title = 'NettyMVC Plugin'
-	String description = 'Adds support for using Netty in Grails'
+	String description = 'NettyMVC Plugin'
 	String documentation = 'http://grails.org/plugin/nettymvc'
 	List pluginExcludes = [
 		'docs/**',
