@@ -167,9 +167,13 @@ class GroovyUtils {
 				", ErrorMessage: $response.errorMessage, ContentLength: $response.contentLength" +
 				", ContentType: $response.contentType, Committed: $response.committed" +
 				", RedirectedUrl: $response.redirectedUrl, ForwardedUrl: $response.forwardedUrl" +
-				", IncludedUrls: $response.includedUrls, CharacterEncoding: $response.characterEncoding" +
-				", ContentAsString: $content\n\n"
-		log.debug message
+				", IncludedUrls: $response.includedUrls, CharacterEncoding: $response.characterEncoding"
+		if (log.traceEnabled) {
+			log.trace message + ", ContentAsString: $content\n\n"
+		}
+		else {
+			log.debug message
+		}
 	}
 
 	static String text(node) {
