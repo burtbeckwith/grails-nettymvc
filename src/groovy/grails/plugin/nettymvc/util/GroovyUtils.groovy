@@ -31,7 +31,9 @@ class GroovyUtils {
 
 	static WebXmlData parseWebXml(String xml, GrailsDispatcherServlet dispatcherServlet) {
 
-		def root = new XmlSlurper().parseText(xml)
+		def slurper = new XmlSlurper()
+		slurper.setFeature 'http://apache.org/xml/features/disallow-doctype-decl', true
+		def root = slurper.parseText(xml)
 
 		Map<String, ServletData> servlets = findServlets(root, dispatcherServlet)
 		LinkedHashMap<String, FilterData> filters = findFilters(root)
